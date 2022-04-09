@@ -8,9 +8,10 @@ import {
   Keyboard,
 } from "react-native";
 
-const AddTodo = () => {
+const AddTodo = ({ onInsert }) => {
   const [text, setText] = React.useState("");
   const onPress = () => {
+    onInsert(text);
     setText("");
     Keyboard.dismiss();
   };
