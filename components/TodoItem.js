@@ -1,16 +1,18 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React from "react";
 
-export default function TodoItem({ id, text, done }) {
+export default function TodoItem({ id, text, done, onToggle }) {
   return (
     <View style={styles.item}>
-      <View style={[styles.circle, done && styles.filled]}>
-        {done && (
-          <Image
-            source={require("../assets/icons/check_white/check_white.png")}
-          />
-        )}
-      </View>
+      <TouchableOpacity onPress={() => onToggle(id)}>
+        <View style={[styles.circle, done && styles.filled]}>
+          {done && (
+            <Image
+              source={require("../assets/icons/check_white/check_white.png")}
+            />
+          )}
+        </View>
+      </TouchableOpacity>
       <Text style={[styles.text, done && styles.lineThrough]}>{text}</Text>
     </View>
   );
